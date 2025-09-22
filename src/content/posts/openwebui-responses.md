@@ -13,7 +13,7 @@ lang: ''
 ::github{repo="Besty0728/OpenWebUI-Cloudflare-OSS"}
 
 ## 关于如何在OpenWebUI中启用官方OpenAI的responses端点的模型
-### 1.此次我们采用了社区关于responses端点的解决方案（实测正常使用官方端点）
+### 1.官方端点我们采用了社区关于responses端点的解决方案（实测正常使用官方端点）
 [社区解决方案链接](https://github.com/jrkropp/open-webui-developer-toolkit/tree/main/functions/pipes/openai_responses_manifold)
 先按照社区文档的步骤进行操作，安装这个Pipe；安装链接如下
 ```bash
@@ -21,8 +21,8 @@ https://github.com/jrkropp/open-webui-developer-toolkit/blob/main/functions/pipe
 ```
 安装后需要我们对此Pipe进行一些修改，主要是修改你要请求的端点以及模型等
 ![](/uploads/images/OPRmanager.png)
-## 2.调用Cloudflare的OSS模型
-[Cloudflare OSS模型调用文档](https://developers.cloudflare.com/changelog/2025-08-05-openai-open-models/)（如果你需要调用官方的O系列模型也是类似的）
+## 2.调用Cloudflare的OSS模型，采用我的Pipe
+[Cloudflare OSS模型调用文档](https://developers.cloudflare.com/changelog/2025-08-05-openai-open-models/)
 ### 1.首先你需要去Cloudflare注册一个账号，然后创建一个API Token、获得你的账户ID，获得方法如图
 - 账户ID获得方法
 ![](/uploads/images/CFAI1.png)
@@ -39,19 +39,12 @@ https://github.com/jrkropp/open-webui-developer-toolkit/blob/main/functions/pipe
 ```bash
 https://github.com/Besty0728/OpenWebUI-Cloudflare-OSS/blob/main/cloudflare_responses.py
 ```
-- 请求端点如下
-```plaintext
-https://api.cloudflare.com/client/v4/accounts/<account_id>/ai/v1/responses
-```
-- 将上面的`<account_id>`替换为你自己的账户ID，例如id为114514
-```plaintext
-https://api.cloudflare.com/client/v4/accounts/114514/ai/v1/responses
-```
+- Cloudflare Account ID处填写你刚才获得的账户ID
 - API Key处填写你刚才创建的API Token
 
 - 模型名称处填写你要调用的模型名称，例如本次的`@cf/openai/gpt-oss-120b`，如果你要调用其他模型请参考Cloudflare的文档（以上只适用于responses端点的模型）
 
-**后续填入如图**
+**填入如图**
 ![](/uploads/images/OWCF.png)
 ### 3.最后别忘了启用该Pipe，以及某些模型的特定修改
 例如本文的Cloudflare的OSS模型需要我们在参数处选择禁用`Stream Chat Response`（流式对话响应/流式输出；因为CF不支持流式输出调用该模型；也可以选择不修改，因为我的Pipe禁用了）
