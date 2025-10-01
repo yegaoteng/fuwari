@@ -138,6 +138,10 @@ const jsonLd = {
                             <Icon name="material-symbols:favorite-outline" class="text-[0.875rem] group-hover:scale-110 transition-transform"></Icon>
                             赞助
                         </a>
+                        <button id="share-button" class="group flex items-center gap-1 px-3 py-1.5 rounded bg-[var(--btn-regular-bg)] hover:bg-[var(--btn-regular-bg-hover)] active:bg-[var(--btn-regular-bg-active)] text-[var(--btn-content)] text-xs font-medium transition-all active:scale-95 cursor-pointer">
+                            <Icon name="material-symbols:share-outline" class="text-[0.875rem] group-hover:scale-110 transition-transform"></Icon>
+                            <span id="share-text">分享</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -158,6 +162,66 @@ const jsonLd = {
                     data-loading="lazy"
                     crossorigin="anonymous"
                     async>
+            </script>
+            
+            <!-- 分享按钮功能 -->
+            <script is:inline>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const shareButton = document.getElementById('share-button');
+                    const shareText = document.getElementById('share-text');
+                    
+                    if (shareButton && shareText) {
+                        shareButton.addEventListener('click', async function() {
+                            const url = window.location.href;
+                            
+                            try {
+                                // 尝试使用现代的 Clipboard API
+                                await navigator.clipboard.writeText(url);
+                                
+                                // 显示成功反馈
+                                const originalText = shareText.textContent;
+                                shareText.textContent = '已复制!';
+                                shareButton.style.backgroundColor = 'var(--primary)';
+                                shareButton.style.color = 'white';
+                                
+                                // 2秒后恢复原始状态
+                                setTimeout(function() {
+                                    shareText.textContent = originalText;
+                                    shareButton.style.backgroundColor = '';
+                                    shareButton.style.color = '';
+                                }, 2000);
+                                
+                                console.log('[Share] URL copied:', url);
+                            } catch (err) {
+                                // 兼容老浏览器的复制方法
+                                const textArea = document.createElement('textarea');
+                                textArea.value = url;
+                                textArea.style.position = 'fixed';
+                                textArea.style.left = '-999999px';
+                                document.body.appendChild(textArea);
+                                textArea.focus();
+                                textArea.select();
+                                
+                                try {
+                                    document.execCommand('copy');
+                                    shareText.textContent = '已复制!';
+                                    setTimeout(function() {
+                                        shareText.textContent = '分享';
+                                    }, 2000);
+                                    console.log('[Share] URL copied (fallback):', url);
+                                } catch (err2) {
+                                    console.error('[Share] Failed to copy:', err2);
+                                    shareText.textContent = '复制失败';
+                                    setTimeout(function() {
+                                        shareText.textContent = '分享';
+                                    }, 2000);
+                                } finally {
+                                    document.body.removeChild(textArea);
+                                }
+                            }
+                        });
+                    }
+                });
             </script>
     <br>
 
