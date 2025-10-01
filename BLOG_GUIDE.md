@@ -164,13 +164,13 @@ src/content/posts/
 ### 1. 写作流程
 ```bash
 # 1. 创建新文章
-npm run new-post -- "新文章标题"
+pnpm run new-post -- "新文章标题"
 
 # 2. 编辑文章
 # 使用你喜欢的编辑器编辑 .md 文件
 
 # 3. 本地预览
-npm run dev
+pnpm run dev
 
 # 4. 提交更改
 git add .
