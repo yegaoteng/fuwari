@@ -31,6 +31,7 @@ lang: ''
 | **#** | 长期记忆模式，给项目或我们用户级别添加要Claude知道的东西（[附加于CLAUDE.md](http://附加于CLAUDE.md)文件下）用户级别的位于C/User/用户名/.claude文件夹下 | # 用中文与我对话 |
 | **/ide** | 开启ide集成（非常方便，注意要下载对应的插件）使用后，以VSCode举例，接近于VSCode原生Github Copilot下的Agent模式体验 | 无 |
 | **claude -p “问题”** | 临时一次性对话，类似于一次性的Olllma本地模型 |  |
+| **Esc*2/ /rewind** | claudecode2.0新增的检查点功能，回退代码！ | 无 |
 
 ---
 
@@ -236,7 +237,7 @@ Hook调用时机：
 
 ---
 
-## 🚥代码回退（依靠额外插件，但强烈支持）
+## 🚥代码回退（Claudecode2.0之前的依靠额外插件，但强烈支持）
 
 下载Github开源项目ccundo
 
