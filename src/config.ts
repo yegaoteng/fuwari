@@ -108,6 +108,11 @@ export const navBarConfig: NavBarConfig = {
 			url: "https://stats.uptimerobot.com/nqCDcNPcUp", // UptimeRobot status page
 			external: true, // Show an external link icon and will open in a new tab
 		},
+		{
+			name: "流量监控",
+			url: "https://eo.ai0728.com.cn/",
+			external: true,
+		},
 	],
 };
 
