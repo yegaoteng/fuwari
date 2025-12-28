@@ -20,6 +20,7 @@ interface Props {
 	description: string;
 	draft: boolean;
 	style: string;
+	isLCP?: boolean;
 }
 const {
 	entry,
@@ -31,6 +32,7 @@ const {
 	image,
 	description,
 	style,
+	isLCP = false,
 } = Astro.props;
 
 const isPinned = entry.data.pinned === true;
@@ -42,7 +44,7 @@ const coverWidth = "28%";
 
 const { remarkPluginFrontmatter } = await entry.render();
 ---
-<div class:list={["card-base flex flex-col-reverse md:flex-col w-full rounded-[var(--radius-large)] overflow-hidden relative group", className]} style={style}>
+<div id={`post-card-${entry.slug}`} data-slug={entry.slug} class:list={["card-base flex flex-col-reverse md:flex-col w-full rounded-[var(--radius-large)] overflow-hidden relative group", className]} style={style}>
     <div class:list={["pl-6 md:pl-9 pr-6 md:pr-2 pt-6 md:pt-7 pb-6 relative z-10", {"w-full md:w-[calc(100%_-_52px_-_12px)]": !hasCover, "w-full md:w-[calc(100%_-_var(--coverWidth)_-_12px)]": hasCover}]}>
         <a href={url}
            class="transition-colors duration-300 group-hover:text-[var(--primary)] w-full block font-bold mb-3 text-3xl text-90
@@ -109,7 +111,7 @@ const { remarkPluginFrontmatter } = await entry.render();
             </Icon>
         </div>
         <ImageWrapper src={image} basePath={path.join("content/posts/", getDir(entry.id))} alt="Cover Image of the Post"
-                  class="w-full h-full object-cover transition-transform duration-700 group-hover/cover:scale-110">
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover/cover:scale-110" isLCP={isLCP}>
         </ImageWrapper>
     </a>}
 
@@ -129,8 +131,28 @@ const { remarkPluginFrontmatter } = await entry.render();
 
 <script define:vars={{ entry, umamiConfig }}>
     // 获取文章浏览量统计
+    function updateStatsUI(slug, pageViews, visits) {
+        const viewsElement = document.getElementById(`page-views-${slug}`);
+        const visitsElement = document.getElementById(`page-visits-${slug}`);
+        if (viewsElement) {
+            viewsElement.textContent = pageViews.toString();
+        }
+        if (visitsElement) {
+            visitsElement.textContent = visits.toString();
+        }
+    }
+
+    // 获取文章浏览量统计
     async function fetchPostCardViews(slug) {
         if (!umamiConfig.enable) {
+            return;
+        }
+
+        // 1. 初始化并检查缓存
+        window.umamiCache = window.umamiCache || {};
+        if (window.umamiCache[slug]) {
+            const { pageViews, visits } = window.umamiCache[slug];
+            updateStatsUI(slug, pageViews, visits);
             return;
         }
         
@@ -162,32 +184,40 @@ const { remarkPluginFrontmatter } = await entry.render();
             const pageViews = statsData.pageviews || 0;
             const visits = statsData.visits || 0;
             
-            const viewsElement = document.getElementById(`page-views-${slug}`);
-            const visitsElement = document.getElementById(`page-visits-${slug}`);
-             if (viewsElement) {
-                 viewsElement.textContent = pageViews.toString();
-             }
-             if (visitsElement) {
-                 visitsElement.textContent = visits.toString();
-             }
+            // 2. 写入缓存
+            window.umamiCache[slug] = { pageViews, visits };
+            
+            // 3. 更新 UI
+            updateStatsUI(slug, pageViews, visits);
+
         } catch (error) {
             console.error('Error fetching page views for', slug, ':', error);
-            const viewsElement = document.getElementById(`page-views-${slug}`);
-            const visitsElement = document.getElementById(`page-visits-${slug}`);
-            if (viewsElement) {
-                viewsElement.textContent = '-';
-            }
-            if (visitsElement) {
-                visitsElement.textContent = '-';
-            }
+            updateStatsUI(slug, '-', '-');
         }
     }
 
     // 页面加载完成后获取统计数据
     function initPostCardStats() {
-        const slug = entry.slug;
-        if (slug) {
-            fetchPostCardViews(slug);
+        // 使用 IntersectionObserver 实现懒加载
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const slug = entry.target.dataset.slug;
+                    if (slug) {
+                        fetchPostCardViews(slug);
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            rootMargin: '50px 0px', // 提前 50px 开始加载
+            threshold: 0.1
+        });
+
+        // 观察当前组件的根元素
+        const card = document.getElementById(`post-card-${entry.slug}`);
+        if (card) {
+            observer.observe(card);
         }
     }
 

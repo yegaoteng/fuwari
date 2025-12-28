@@ -1,76 +1,165 @@
-# 🍥Fuwari
+<div align="center">
 
-A static blog template built with [Astro](https://astro.build).
+# 🌸 Fuwari Enhanced
 
-[**🖥️ Live Demo (Vercel)**](https://fuwari.vercel.app)&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
-[**📦 Old Hexo Version**](https://github.com/saicaca/hexo-theme-vivia)&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;
+**基于 [saicaca/fuwari](https://github.com/saicaca/fuwari) 深度定制的个人博客系统**
 
+[![Astro](https://img.shields.io/badge/Astro-5.x-FF5D01?logo=astro&logoColor=white)](https://astro.build)
+[![Svelte](https://img.shields.io/badge/Svelte-5.x-FF3E00?logo=svelte&logoColor=white)](https://svelte.dev)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.x-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-> README version: `2024-09-10`
+[🖥️ 在线预览](https://www.micostar.cc) · [📦 上游仓库](https://github.com/saicaca/fuwari) · [📖 博客编辑指南](./BLOG_GUIDE.md)
 
-![Preview Image](https://raw.githubusercontent.com/saicaca/resource/main/fuwari/home.png)
+</div>
 
-## ✨ Features
+---
 
-- [x] Built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com)
-- [x] Smooth animations and page transitions
-- [x] Light / dark mode
-- [x] Customizable theme colors & banner
-- [x] Responsive design
-- [ ] Comments
-- [x] Search
-- [ ] TOC
+## ✨ 魔改特性
 
-## 🚀 How to Use
+在保留原版优雅设计的基础上，本版本新增了以下功能：
 
-1. [Generate a new repository](https://github.com/saicaca/fuwari/generate) from this template or fork this repository.
-2. To edit your blog locally, clone your repository, run `pnpm install` AND `pnpm add sharp` to install dependencies.
-   - Install [pnpm](https://pnpm.io) `npm install -g pnpm` if you haven't.
-3. Edit the config file `src/config.ts` to customize your blog.
-4. Run `pnpm new-post <filename>` to create a new post and edit it in `src/content/posts/`.
-5. Deploy your blog to Vercel, Netlify, GitHub Pages, etc. following [the guides](https://docs.astro.build/en/guides/deploy/). You need to edit the site configuration in `astro.config.mjs` before deployment.
+### 🖼️ 智能图片系统
+- **双CDN图床回退** — 主力图床失效时自动切换至备用图床，保障图片稳定加载
+- **Fancybox 图片灯箱** — 点击图片即可放大查看，支持手势缩放和滑动
 
-## ⚙️ Frontmatter of Posts
+### 🔒 安全与隐私
+- **防盗链保护** — 域名检测与安全警告，防止内容被恶意嵌入
+- **隐私友好分析** — 集成 Umami 无 Cookie 分析与 Google Analytics
+
+### 📊 监控与 SEO
+- **IndexNow 集成** — 一键推送新内容至搜索引擎，加速收录
+- **站点状态监控** — 集成 UptimeRobot，实时监控站点可用性
+- **流量监控面板** — EdgeOne 流量分析，掌握访问趋势
+
+### 📝 内容增强
+- **目录导航 (TOC)** — 长文自动生成右侧目录，快速跳转
+- **文章置顶** — 支持 `pinned: true` 将重要文章置顶显示
+- **数学公式** — KaTeX 渲染，完美支持 LaTeX 语法
+- **GitHub 风格提示块** — 支持 NOTE / TIP / WARNING 等 Admonitions
+- **代码块增强** — 可折叠代码、行号显示、GitHub Dark 主题
+
+### 🎨 视觉体验
+- **自定义背景图** — 支持动态随机背景，opacity 可调
+- **强制暗黑模式** — 默认深色主题，沉浸式阅读体验
+- **平滑页面过渡** — Swup 驱动的丝滑切换动画
+
+### 🧩 应用中心
+- **Apps 页面** — 展示个人应用、工具和服务链接
+
+---
+
+## 🚀 快速开始
+
+### 环境要求
+- **Node.js** 18+
+- **pnpm** 9+
+
+### 安装与运行
+
+```bash
+# 克隆仓库
+git clone https://github.com/Besty0728/fuwari.git
+
+# 安装依赖
+pnpm install
+
+# 启动开发服务器
+pnpm dev
+```
+
+访问 `http://localhost:4321` 即可预览。
+
+---
+
+## 📂 项目结构
+
+```
+src/
+├── config.ts          # 🎯 站点配置入口 (必改)
+├── content/posts/     # 📝 博客文章 (Markdown)
+├── components/        # 🧩 UI 组件
+├── layouts/           # 📐 页面布局
+├── pages/             # 🔗 路由页面
+└── plugins/           # 🔌 Rehype/Remark 插件
+scripts/
+├── new-post.js        # ✍️ 创建新文章脚本
+├── migrate-from-sqlite.mjs  # 📥 SQLite 数据迁移
+└── submit-indexnow*.mjs     # 🔍 IndexNow 推送脚本
+```
+
+---
+
+## ⚙️ 常用命令
+
+| 命令 | 说明 |
+| :--- | :--- |
+| `pnpm dev` | 启动开发服务器 |
+| `pnpm build` | 构建生产版本 |
+| `pnpm preview` | 预览生产构建 |
+| `pnpm new-post "标题"` | 创建新文章 |
+| `pnpm build:indexnow` | 构建并推送 IndexNow |
+| `pnpm lint` | 代码检查 |
+| `pnpm format` | 代码格式化 |
+
+---
+
+## 📝 文章 Frontmatter
 
 ```yaml
 ---
-title: My First Blog Post
-published: 2023-09-09
-description: This is the first post of my new Astro blog.
+title: 文章标题
+published: 2025-01-01
+description: 文章摘要
 image: ./cover.jpg
-tags: [Foo, Bar]
-category: Front-end
+tags: [技术, 教程]
+category: 开发笔记
 draft: false
-lang: jp      # Set only if the post's language differs from the site's language in `config.ts`
+pinned: true          # 置顶文章
+lang: zh_CN           # 指定语言 (可选)
 ---
 ```
 
-## 🧞 Commands
+---
 
-All commands are run from the root of the project, from a terminal:
+## 🔧 配置说明
 
-| Command                             | Action                                           |
-|:------------------------------------|:-------------------------------------------------|
-| `pnpm install` AND `pnpm add sharp` | Installs dependencies                            |
-| `pnpm dev`                          | Starts local dev server at `localhost:4321`      |
-| `pnpm build`                        | Build your production site to `./dist/`          |
-| `pnpm preview`                      | Preview your build locally, before deploying     |
-| `pnpm new-post <filename>`          | Create a new post                                |
-| `pnpm astro ...`                    | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro --help`                 | Get help using the Astro CLI                     |
+主要配置位于 `src/config.ts`：
 
-### Migrate from an existing SQLite blog (experimental)
+| 配置项 | 说明 |
+| :--- | :--- |
+| `siteConfig` | 站点标题、描述、主题色、背景图等 |
+| `navBarConfig` | 导航栏链接配置 |
+| `profileConfig` | 作者信息与社交链接 |
+| `imageFallbackConfig` | 双CDN图床域名配置 |
+| `antiLeechConfig` | 防盗链域名白名单 |
+| `umamiConfig` | Umami 分析配置 |
+| `googleAnalyticsConfig` | GA 分析配置 |
 
-PowerShell examples:
+---
 
-1) Dry run to inspect tables/columns and preview mapping
+## 🌐 部署
 
-```
-pnpm node scripts/migrate-from-sqlite.mjs --db "D:\\Betsy\\test\\database.db" --dry-run
-```
+本项目支持以下平台一键部署：
 
-2) Export Markdown posts into `src/content/posts`
+- [Vercel](https://vercel.com) (推荐)
+- [Netlify](https://netlify.com)
+- [Cloudflare Pages](https://pages.cloudflare.com)
 
-```
-pnpm node scripts/migrate-from-sqlite.mjs --db "D:\\Betsy\\test\\database.db" --out ./src/content/posts
-```
+部署前请确保已配置 `astro.config.mjs` 中的 `site` 字段。
+
+---
+
+## 📄 许可证
+
+本项目基于 [MIT License](./LICENSE) 开源。
+
+内容遵循 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 协议。
+
+---
+
+<div align="center">
+
+**基于 [Fuwari](https://github.com/saicaca/fuwari) | 由 [流转星(Betsy)](https://github.com/Besty0728) 魔改维护**
+
+</div>

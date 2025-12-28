@@ -1,8 +1,8 @@
----
+﻿---
 title: 我的ClaudeCode使用笔记
 published: 2025-09-20T19:33:12
 description: '最近正式在一些项目开始使用ClaudeCode，记录一些使用笔记。'
-image: '/uploads/images/claude.png'
+image: '/images/claude.webp'
 tags: [AI, ClaudeCode使用笔记]
 
 draft: false 

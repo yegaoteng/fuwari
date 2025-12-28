@@ -117,7 +117,7 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "https://image.cloudrunmax.top/file/CF/1756734381495_58fc963052f0a5cd8ce123b8d10c4a53.jpg", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
+	avatar: "/images/avatar.webp", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
 	name: "流转星(Betsy)",
 	bio: "爱我所爱，我们是彼此永远的动力",
 	links: [

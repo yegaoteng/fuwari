@@ -1,55 +1,72 @@
 # Fuwari Project Context
 
-## Project Overview
-**Fuwari** is a static blog template built with **Astro**, **Svelte**, and **Tailwind CSS**. It is designed to be highly customizable, performant, and visually appealing with features like smooth page transitions, light/dark mode, and rich content integrations.
+> 本文档是 AI 理解项目的基石，请保持与 `claude.md` 同步更新。
 
-**Key Features:**
-*   **Framework:** Astro 5.x
-*   **Styling:** Tailwind CSS 3.x with extensive customization.
-*   **Interactivity:** Svelte 5.x for interactive components.
-*   **Content:** Markdown-based content management with type-safe frontmatter (Astro Content Collections).
-*   **Features:** Search, Table of Contents, Image Fallback, Anti-Leech protection, Analytics (Umami, GA).
+## Project Overview
+
+**Fuwari** 是一个基于 **Astro** 构建的静态博客模板，使用 **Svelte** 和 **Tailwind CSS** 实现高度自定义、高性能和优美的视觉效果。
+
+**技术栈：**
+- **Framework:** Astro 5.x
+- **Styling:** Tailwind CSS 3.x
+- **Interactivity:** Svelte 5.x
+- **Content:** Astro Content Collections (Markdown)
+- **Package Manager:** pnpm 9.x
+- **Linting:** Biome
+
+**核心特性：**
+- 搜索、目录导航 (TOC)、文章置顶
+- 图片回退 (双 CDN)、防盗链保护
+- 分析集成 (Umami、Google Analytics)
+- IndexNow 搜索引擎快速收录
+
+---
 
 ## Architecture & Structure
 
 ### Key Directories
-*   `src/content/posts/`: Stores the blog posts (Markdown/MDX).
-*   `src/config.ts`: **Primary configuration file** for site settings, navigation, profile info, and feature toggles.
-*   `src/components/`: Reusable UI components (Astro and Svelte).
-*   `src/layouts/`: Page layouts (e.g., `MainGridLayout.astro`).
-*   `src/pages/`: Astro file-based routing. Includes API routes like `rss.xml.ts`.
-*   `src/plugins/`: Custom Rehype/Remark plugins for content processing.
-*   `public/`: Static assets (favicons, images, `robots.txt` generation).
-*   `scripts/`: Utility scripts for migration and other tasks.
+| 目录 | 说明 |
+| :--- | :--- |
+| `src/content/posts/` | 博客文章 (Markdown) |
+| `src/config.ts` | **主配置文件**（站点、导航、个人资料、功能开关） |
+| `src/components/` | UI 组件 (Astro + Svelte) |
+| `src/layouts/` | 页面布局 |
+| `src/pages/` | 路由页面与 API 端点 |
+| `src/plugins/` | 自定义 Rehype/Remark 插件 |
+| `public/` | 静态资源 |
+| `scripts/` | 工具脚本 (迁移、IndexNow 提交等) |
 
 ### Key Configuration Files
-*   `astro.config.mjs`: Astro project configuration, integration setup (Tailwind, Svelte, Sitemap, Expressive Code).
-*   `src/config.ts`: User-facing configuration. Edit this to change site title, author, links, etc.
-*   `src/content/config.ts`: Schema definitions for content collections (`posts`, `spec`, `assets`).
-*   `tailwind.config.cjs`: Tailwind CSS configuration.
+| 文件 | 说明 |
+| :--- | :--- |
+| `astro.config.mjs` | Astro 项目配置 |
+| `src/config.ts` | 用户配置入口 |
+| `src/content/config.ts` | Content Collections Schema |
+| `tailwind.config.cjs` | Tailwind CSS 配置 |
+
+---
 
 ## Development Workflow
 
 ### Prerequisites
-*   Node.js (LTS recommended)
-*   pnpm (Project uses `pnpm-lock.yaml`)
+- Node.js 18+ (LTS)
+- pnpm 9+
 
 ### Common Commands
-Run these commands from the project root:
 
-| Command | Description |
+| 命令 | 说明 |
 | :--- | :--- |
-| `pnpm install` | Install dependencies (also run `pnpm add sharp` if needed). |
-| `pnpm dev` | Start the local development server at `localhost:4321`. |
-| `pnpm build` | Build the site for production output to `./dist/`. |
-| `pnpm preview` | Preview the production build locally. |
-| `pnpm new-post <filename>` | Create a new blog post template in `src/content/posts/`. |
-| `pnpm lint` | Run Biome to lint the codebase. |
-| `pnpm format` | Run Biome to format the codebase. |
+| `pnpm install` | 安装依赖 |
+| `pnpm dev` | 启动开发服务器 (`localhost:4321`) |
+| `pnpm build` | 构建生产版本到 `./dist/` |
+| `pnpm preview` | 预览生产构建 |
+| `pnpm new-post <filename>` | 创建新文章模板 |
+| `pnpm lint` | Biome 代码检查 |
+| `pnpm format` | Biome 代码格式化 |
 
 ### Creating Content
-Posts are located in `src/content/posts`.
-Frontmatter schema includes:
+
+文章位于 `src/content/posts/`，Frontmatter 格式：
 ```yaml
 ---
 title: "Post Title"
@@ -59,16 +76,95 @@ image: "./cover.jpg"
 tags: ["Tag1", "Tag2"]
 category: "Category"
 draft: false
+pinned: false           # 是否置顶
+lang: zh_CN             # 语言 (可选)
 ---
 ```
 
+---
+
+## IndexNow 搜索引擎快速收录
+
+### 功能概述
+集成 IndexNow 协议，自动向 Bing、Yandex 等搜索引擎提交 URL，加速内容收录。
+
+### 核心文件
+| 文件 | 说明 |
+| :--- | :--- |
+| `public/751fa2696f5b4f5890799ca542b34fbb.txt` | IndexNow 验证密钥 |
+| `src/pages/api/indexnow.ts` | IndexNow API 端点 |
+| `src/pages/api/webhook/indexnow.ts` | Webhook 处理端点 |
+| `scripts/submit-indexnow.mjs` | 全量提交脚本 |
+| `scripts/submit-indexnow-incremental.mjs` | **增量提交脚本（推荐）** |
+
+### 命令一览
+
+| 命令 | 说明 |
+| :--- | :--- |
+| `pnpm build:indexnow` | 构建并提交到搜索引擎 |
+| `pnpm submit-indexnow` | 仅提交所有 URL（不构建） |
+| `pnpm submit-indexnow-inc` | **增量提交**（仅新增 URL） |
+| `pnpm submit-indexnow-force` | 强制提交所有 URL |
+| `pnpm indexnow-status` | 查看提交状态 |
+| `pnpm indexnow-clear` | 清除提交历史 |
+
+### 增量提交原理
+1. 读取 `sitemap.xml` 中的所有 URL
+2. 对比 `.indexnow-submitted.json` 中已提交记录
+3. 仅提交新增 URL，节省 API 配额
+4. 提交成功后更新记录文件
+
+> ⚠️ `.indexnow-submitted.json` 会自动生成，**请勿提交到 Git**。
+
+### 支持的搜索引擎
+| 端点 | 说明 |
+| :--- | :--- |
+| `api.indexnow.org` | 通用端点 |
+| `www.bing.com/indexnow` | Microsoft Bing |
+| `yandex.com/indexnow` | Yandex |
+
+### API 响应处理
+不同端点返回格式不同：
+- **api.indexnow.org / Bing**: 返回空响应体 (Content-Length: 0)
+- **Yandex**: 返回 JSON 格式 `{"success":true}`
+
+脚本已处理两种情况，无需担心 JSON 解析错误。
+
+### 状态码说明
+| 状态码 | 说明 |
+| :--- | :--- |
+| `200` | 成功接收并处理 |
+| `202` | 成功接收，稍后处理 |
+| `400` | 请求格式错误 |
+| `403` | 密钥验证失败 |
+| `422` | URL 格式错误或过多 |
+| `429` | 请求频率过高 |
+
+### 故障排除
+```bash
+# 查看详细日志
+pnpm submit-indexnow
+
+# 检查 API 状态
+curl https://www.micostar.tech/api/indexnow
+
+# 验证密钥文件
+curl https://www.micostar.tech/751fa2696f5b4f5890799ca542b34fbb.txt
+```
+
+---
+
 ## Conventions
-*   **Styling:** Use Tailwind CSS utility classes. Custom styles are in `src/styles/`.
-*   **Components:** Prefer Astro components for static content and Svelte for interactive elements.
-*   **Type Safety:** Strict TypeScript mode is enabled. Use defined types in `src/types/`.
-*   **Formatting:** The project uses Biome for formatting and linting (`biome.json`).
+
+- **Styling:** 使用 Tailwind CSS 工具类，自定义样式在 `src/styles/`
+- **Components:** 静态内容用 Astro 组件，交互元素用 Svelte
+- **Type Safety:** 严格 TypeScript 模式，类型定义在 `src/types/`
+- **Formatting:** 使用 Biome (`biome.json`)
+
+---
 
 ## Integrations & Plugins
-*   **Expressive Code:** Used for syntax highlighting with custom themes.
-*   **Remark/Rehype:** Extensive chain for processing Markdown, including math (Katex), directives, and custom components (Admonitions, Github Cards).
-*   **Swup:** Used for smooth page transitions (configured in `astro.config.mjs`).
+
+- **Expressive Code:** 代码语法高亮 (GitHub Dark 主题)
+- **Remark/Rehype:** Markdown 处理链（KaTeX 数学公式、Admonitions、GitHub Cards）
+- **Swup:** 平滑页面过渡动画

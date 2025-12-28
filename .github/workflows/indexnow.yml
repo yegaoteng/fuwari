@@ -1,7 +1,7 @@
 name: IndexNow Auto Submit
 
 on:
-  # 当有新的推送到 main 分支时触发（Vercel 会自动部署）
+  # 当有新的推送到 main 分支时触发
   push:
     branches: [ main ]
   
@@ -34,6 +34,25 @@ jobs:
         
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
+
+    # 恢复上次的提交记录缓存
+    - name: Restore IndexNow submission cache
+      uses: actions/cache/restore@v4
+      id: cache-restore
+      with:
+        path: .indexnow-submitted.json
+        key: indexnow-submitted-${{ github.ref_name }}
+        restore-keys: |
+          indexnow-submitted-
+
+    - name: Show cache status
+      run: |
+        if [ "${{ steps.cache-restore.outputs.cache-hit }}" == "true" ]; then
+          echo "✅ 缓存命中，已恢复上次提交记录"
+          cat .indexnow-submitted.json | head -20
+        else
+          echo "ℹ️ 未找到缓存，将作为首次提交"
+        fi
       
     - name: Build site
       run: pnpm build
@@ -45,12 +64,23 @@ jobs:
           echo "✅ IndexNow incremental submission successful"
         else
           echo "❌ IndexNow submission failed, but continuing..."
-          exit 0  # 不让工作流失败
+          exit 0
         fi
       continue-on-error: true
+
+    # 保存更新后的提交记录到缓存
+    - name: Save IndexNow submission cache
+      uses: actions/cache/save@v4
+      if: always()
+      with:
+        path: .indexnow-submitted.json
+        key: indexnow-submitted-${{ github.ref_name }}-${{ github.run_id }}
       
     - name: Report status
       if: always()
       run: |
         echo "IndexNow submission workflow completed"
-        echo "Check logs above for detailed submission results"
+        if [ -f .indexnow-submitted.json ]; then
+          echo "📊 当前提交记录:"
+          cat .indexnow-submitted.json | head -20
+        fi
