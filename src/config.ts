@@ -105,7 +105,7 @@ export const navBarConfig: NavBarConfig = {
 		},
 		{
 			name: "状态",
-			url: "https://stats.uptimerobot.com/nqCDcNPcUp", // UptimeRobot status page
+			url: "https://uptime.micostar.cc/status/default", // UptimeRobot status page
 			external: true, // Show an external link icon and will open in a new tab
 		},
 		{
