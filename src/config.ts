@@ -167,7 +167,7 @@ export const antiLeechConfig: AntiLeechConfig = {
 
 export const googleAnalyticsConfig = {
 	enable: true,
-	measurementId: "G-C7LN161H2G",
+	measurementId: "G-68S9RLWRP0",
 };
 
 export const expressiveCodeConfig: ExpressiveCodeConfig = {

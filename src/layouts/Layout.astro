@@ -344,14 +344,17 @@ const bannerOffset =
 		<!-- Umami 分享数据辅助脚本（缓存 share token / websiteId） -->
 
 		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-C7LN161H2G"></script>
-		<script is:inline>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-
-		  gtag('config', 'G-C7LN161H2G');
-		</script>
+		{googleAnalyticsConfig.enable && (
+			<>
+				<script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsConfig.measurementId}`}></script>
+				<script is:inline define:vars={{measurementId: googleAnalyticsConfig.measurementId}}>
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
+					gtag('config', measurementId);
+				</script>
+			</>
+		)}
 
 	</head>
 	<body class=" min-h-screen transition " class:list={[{"lg:is-home": isHomePage, "enable-banner": enableBanner}]}
