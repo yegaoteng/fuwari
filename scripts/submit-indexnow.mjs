@@ -6,11 +6,11 @@ async function submitToIndexNow() {
     // 读取构建后的 sitemap
     const sitemapPath = join(process.cwd(), 'dist', 'sitemap-0.xml');
     const sitemapContent = readFileSync(sitemapPath, 'utf-8');
-    
+
     // 从 sitemap 中提取 URL
     const urlMatches = sitemapContent.match(/<loc>(.*?)<\/loc>/g);
     const urls = urlMatches ? urlMatches.map(match => match.replace(/<\/?loc>/g, '')) : [];
-    
+
     if (urls.length === 0) {
       console.error('❌ 未找到要提交的 URL');
       process.exit(1);
@@ -19,9 +19,9 @@ async function submitToIndexNow() {
     console.log(`📋 准备提交 ${urls.length} 个 URL 到 IndexNow`);
 
     // IndexNow 官方配置
-    const key = '4ff84931e3084c36bcc43c09ec05df75';
+    const key = 'e9df8b96677248069AA19F879F7FDB29';
     const host = 'www.micostar.cc';
-    const keyLocation = 'https://www.micostar.cc/4ff84931e3084c36bcc43c09ec05df75.txt';
+    const keyLocation = 'https://www.micostar.cc/e9df8b96677248069AA19F879F7FDB29.txt';
 
     const payload = {
       host,
@@ -33,7 +33,7 @@ async function submitToIndexNow() {
     // 提交到 IndexNow 官方 API
     try {
       console.log('🔄 提交到 api.indexnow.org');
-      
+
       const response = await fetch('https://api.indexnow.org/IndexNow', {
         method: 'POST',
         headers: {
@@ -54,7 +54,7 @@ async function submitToIndexNow() {
       if (response.ok) {
         console.log(`✅ IndexNow 提交成功: HTTP ${response.status} ${response.statusText}`);
         console.log(`📄 共提交了 ${urls.length} 个 URL`);
-        
+
         if (responseBody) {
           console.log(`📋 响应内容: ${responseBody}`);
         } else {
@@ -67,7 +67,7 @@ async function submitToIndexNow() {
         }
         process.exit(1);
       }
-      
+
     } catch (error) {
       console.error(`❌ IndexNow 提交出错: ${error.message}`);
       process.exit(1);

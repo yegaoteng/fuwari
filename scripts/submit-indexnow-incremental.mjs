@@ -12,7 +12,7 @@ function getSubmittedUrls() {
       totalSubmissions: 0
     };
   }
-  
+
   try {
     const data = readFileSync(SUBMITTED_URLS_FILE, 'utf-8');
     return JSON.parse(data);
@@ -40,18 +40,18 @@ async function submitIncrementalIndexNow() {
   try {
     // 读取构建后的 sitemap
     const sitemapPath = join(process.cwd(), 'dist', 'sitemap-0.xml');
-    
+
     if (!existsSync(sitemapPath)) {
       console.error('❌ 未找到 sitemap 文件，请先运行 pnpm build');
       process.exit(1);
     }
-    
+
     const sitemapContent = readFileSync(sitemapPath, 'utf-8');
-    
+
     // 从 sitemap 中提取 URL
     const urlMatches = sitemapContent.match(/<loc>(.*?)<\/loc>/g);
     const currentUrls = urlMatches ? urlMatches.map(match => match.replace(/<\/?loc>/g, '')) : [];
-    
+
     if (currentUrls.length === 0) {
       console.error('❌ 未找到要提交的 URL');
       process.exit(1);
@@ -65,7 +65,7 @@ async function submitIncrementalIndexNow() {
 
     // 找出新增的URL
     const newUrls = currentUrls.filter(url => !submittedUrls.has(url));
-    
+
     if (newUrls.length === 0) {
       console.log('✅ 没有新增URL需要提交到 IndexNow');
       console.log(`📊 统计信息:`);
@@ -82,9 +82,9 @@ async function submitIncrementalIndexNow() {
     });
 
     // IndexNow 官方配置
-    const key = '4ff84931e3084c36bcc43c09ec05df75';
+    const key = 'e9df8b96677248069AA19F879F7FDB29';
     const host = 'www.micostar.cc';
-    const keyLocation = 'https://www.micostar.cc/4ff84931e3084c36bcc43c09ec05df75.txt';
+    const keyLocation = 'https://www.micostar.cc/e9df8b96677248069AA19F879F7FDB29.txt';
 
     const payload = {
       host,
@@ -95,7 +95,7 @@ async function submitIncrementalIndexNow() {
 
     // 提交到 IndexNow 官方 API
     console.log('🔄 正在提交新增URL到 api.indexnow.org...');
-    
+
     const response = await fetch('https://api.indexnow.org/IndexNow', {
       method: 'POST',
       headers: {
@@ -117,7 +117,7 @@ async function submitIncrementalIndexNow() {
 
     if (isSuccess) {
       console.log(`✅ IndexNow 提交成功! (HTTP ${response.status})`);
-      
+
       // 更新已提交URL记录
       const updatedSubmittedData = {
         urls: [...submittedUrls, ...newUrls],
@@ -131,15 +131,15 @@ async function submitIncrementalIndexNow() {
           newUrls: newUrls
         }
       };
-      
+
       saveSubmittedUrls(updatedSubmittedData);
-      
+
       console.log(`📊 提交统计:`);
       console.log(`   - 本次新增: ${newUrls.length} 个URL`);
       console.log(`   - 累计提交: ${updatedSubmittedData.urls.length} 个URL`);
       console.log(`   - 提交次数: ${updatedSubmittedData.totalSubmissions}`);
       console.log(`   - 节省额度: ${currentUrls.length - newUrls.length} 个URL (${Math.round((1 - newUrls.length / currentUrls.length) * 100)}%)`);
-      
+
     } else {
       console.error(`❌ IndexNow 提交失败: HTTP ${response.status} ${response.statusText}`);
       if (responseBody) {
@@ -158,21 +158,21 @@ async function submitIncrementalIndexNow() {
 async function forceSubmitAll() {
   try {
     console.log('🔄 强制提交模式：将提交所有URL...');
-    
+
     // 读取构建后的 sitemap
     const sitemapPath = join(process.cwd(), 'dist', 'sitemap-0.xml');
     const sitemapContent = readFileSync(sitemapPath, 'utf-8');
-    
+
     // 从 sitemap 中提取 URL
     const urlMatches = sitemapContent.match(/<loc>(.*?)<\/loc>/g);
     const urls = urlMatches ? urlMatches.map(match => match.replace(/<\/?loc>/g, '')) : [];
-    
+
     console.log(`📋 准备提交所有 ${urls.length} 个 URL`);
 
     // IndexNow 官方配置
-    const key = '4ff84931e3084c36bcc43c09ec05df75';
+    const key = 'e9df8b96677248069AA19F879F7FDB29';
     const host = 'www.micostar.cc';
-    const keyLocation = 'https://www.micostar.cc/4ff84931e3084c36bcc43c09ec05df75.txt';
+    const keyLocation = 'https://www.micostar.cc/e9df8b96677248069AA19F879F7FDB29.txt';
 
     const payload = {
       host,
@@ -194,7 +194,7 @@ async function forceSubmitAll() {
 
     if (isSuccess) {
       console.log(`✅ 强制提交成功! (HTTP ${response.status})`);
-      
+
       // 重置记录
       const submittedData = {
         urls: urls,
@@ -208,14 +208,14 @@ async function forceSubmitAll() {
           forcedSubmission: true
         }
       };
-      
+
       saveSubmittedUrls(submittedData);
-      
+
     } else {
       console.error(`❌ 强制提交失败: HTTP ${response.status}`);
       process.exit(1);
     }
-    
+
   } catch (error) {
     console.error('❌ 强制提交失败:', error.message);
     process.exit(1);
@@ -225,12 +225,12 @@ async function forceSubmitAll() {
 // 查看提交状态
 function showStatus() {
   const submittedData = getSubmittedUrls();
-  
+
   console.log('📊 IndexNow 提交状态:');
   console.log(`   - 已提交URL数量: ${submittedData.urls?.length || 0}`);
   console.log(`   - 上次提交时间: ${submittedData.lastSubmitted || '从未提交'}`);
   console.log(`   - 总提交次数: ${submittedData.totalSubmissions || 0}`);
-  
+
   if (submittedData.lastSubmissionDetails) {
     const details = submittedData.lastSubmissionDetails;
     console.log(`   - 上次提交详情:`);
