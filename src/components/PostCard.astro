@@ -189,8 +189,8 @@ const { remarkPluginFrontmatter } = await entry.render();
         // 1. 初始化并检查缓存
         window.umamiCache = window.umamiCache || {};
         if (window.umamiCache[slug]) {
-            const { pageViews, visits } = window.umamiCache[slug];
-            updateStatsUI(slug, pageViews, visits);
+            const { pageViews, visitors } = window.umamiCache[slug];
+            updateStatsUI(slug, pageViews, visitors);
             return;
         }
         
@@ -220,13 +220,13 @@ const { remarkPluginFrontmatter } = await entry.render();
             
             const statsData = await statsResponse.json();
             const pageViews = statsData.pageviews || 0;
-            const visits = statsData.visits || 0;
+            const visitors = statsData.visitors || 0; // 修复: 使用 visitors 而非 visits
             
             // 2. 写入缓存
-            window.umamiCache[slug] = { pageViews, visits };
+            window.umamiCache[slug] = { pageViews, visitors };
             
             // 3. 更新 UI
-            updateStatsUI(slug, pageViews, visits);
+            updateStatsUI(slug, pageViews, visitors);
 
         } catch (error) {
             console.error('Error fetching page views for', slug, ':', error);

@@ -207,7 +207,7 @@ const config = profileConfig;
             
             const statsData = await statsResponse.json();
             const pageviews = statsData.pageviews || 0;
-            const visitors = statsData.visits || 0;
+            const visitors = statsData.visitors || 0;  // 修复: 使用 visitors (独立访客) 而非 visits (会话数)
             
             const pageviewsElement = document.getElementById('site-pageviews');
             const visitorsElement = document.getElementById('site-visitors');
