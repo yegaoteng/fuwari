@@ -443,57 +443,6 @@ const jsonLd = {
                     }
                 })();
             </script>
-            
-            <!-- 移动端性能优化：加载完成后预渲染所有内容 -->
-            <script is:inline>
-                // 使用 IIFE 避免变量冲突
-                (function() {
-                    'use strict';
-                    
-                    function enableSmoothScroll() {
-                        var container = document.querySelector('.markdown-content');
-                        if (container && !container.classList.contains('content-ready')) {
-                            container.classList.add('content-ready');
-                        }
-                    }
-                    
-                    function scheduleContentReady() {
-                        var resources = window._postPageResources;
-                        if (resources && resources.timeoutId) {
-                            clearTimeout(resources.timeoutId);
-                        }
-                        
-                        // 缩短延迟到 300ms，快速解除限制
-                        var timeoutId = setTimeout(enableSmoothScroll, 300);
-                        
-                        if (resources) {
-                            resources.timeoutId = timeoutId;
-                        }
-                        
-                        // 用户开始滚动时立即解除限制
-                        var scrollHandler = function() {
-                            enableSmoothScroll();
-                            window.removeEventListener('scroll', scrollHandler);
-                            window.removeEventListener('touchmove', scrollHandler);
-                        };
-                        window.addEventListener('scroll', scrollHandler, { once: true, passive: true });
-                        window.addEventListener('touchmove', scrollHandler, { once: true, passive: true });
-                    }
-                    
-                    // 首次加载
-                    if (document.readyState === 'complete') {
-                        scheduleContentReady();
-                    } else {
-                        window.addEventListener('load', scheduleContentReady, { once: true });
-                    }
-                    
-                    // Swup 页面切换（只注册一次）
-                    if (!window._contentReadySwupRegistered) {
-                        document.addEventListener('swup:contentReplaced', scheduleContentReady);
-                        window._contentReadySwupRegistered = true;
-                    }
-                })();
-            </script>
     <br>
 
     <div class="flex flex-col md:flex-row justify-between mb-4 gap-4 overflow-hidden w-full">

@@ -127,48 +127,4 @@
         }
 
     }
-
-    /* ===== 移动端长文章性能优化 ===== */
-
-    /* 
-     * 策略：首屏加载时使用 content-visibility: auto 跳过屏幕外渲染
-     * 页面加载完成后（添加 .content-ready 类）移除限制，确保滚动时流畅
-     */
-    @media (max-width: 768px) {
-
-        /* 代码块延迟渲染 */
-        .expressive-code {
-            content-visibility: auto;
-            contain-intrinsic-size: auto 200px;
-        }
-
-        /* details 折叠区延迟渲染 */
-        details {
-            content-visibility: auto;
-            contain-intrinsic-size: auto 100px;
-        }
-
-        /* 数学公式块延迟渲染 */
-        .math-display,
-        .katex-display {
-            content-visibility: auto;
-            contain-intrinsic-size: auto 80px;
-        }
-
-        /* Mermaid 图表延迟渲染 */
-        .mermaid {
-            content-visibility: auto;
-            contain-intrinsic-size: auto 300px;
-        }
-
-        /* 页面加载完成后，移除 content-visibility 限制，确保滚动流畅 */
-        .content-ready .expressive-code,
-        .content-ready details,
-        .content-ready .math-display,
-        .content-ready .katex-display,
-        .content-ready .mermaid {
-            content-visibility: visible;
-            contain-intrinsic-size: none;
-        }
-    }
 }

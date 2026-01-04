@@ -186,20 +186,3 @@ curl https://www.micostar.cc/4ff84931e3084c36bcc43c09ec05df75.txt
 
 ### 已知问题修复
 - `mermaid is not defined` 错误：MutationObserver 中添加了存在性检查
-
----
-
-## 移动端性能优化
-
-### CSS `content-visibility` 优化
-位于 `src/styles/markdown.css`，仅在移动端 (≤768px) 启用：
-
-| 元素 | 预估高度 | 说明 |
-| :--- | :--- | :--- |
-| `.expressive-code` | 200px | 代码块 |
-| `details` | 100px | 折叠区 |
-| `.katex-display` | 80px | 数学公式 |
-| `.mermaid` | 300px | 流程图 |
-
-**原理**: `content-visibility: auto` 让浏览器跳过屏幕外元素的渲染，显著减少首屏渲染时间。
-
