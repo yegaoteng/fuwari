@@ -171,9 +171,8 @@ const bannerOffset =
 			
 			// 图片回退配置 (从 config.ts imageFallbackConfig 传入)
 			const ORIGINAL_DOMAIN = 'img.micostar.cc';  // 主力图床
-			const FALLBACK_DOMAIN = 'image.cloudrunmax.top'; // R2备用图床
+			const FALLBACK_DOMAIN = 'image.cloudrunmax.top'; // 备用图床 (支持参数注入)
 			
-
 			
 			//console.log('[BG Debug] URL:', bgUrl, 'Enable:', bgEnable);
 			
@@ -199,11 +198,20 @@ const bannerOffset =
 					img.onerror = function(e) {
 						console.error('[BG Debug] Image load failed:', e);
 						
-						// 🎯 Fallback 机制: 如果图片包含主力图床域名,尝试切换到备用图床
+						// 🎯 增强版 Fallback 机制: 
+                        // 如果请求主力 API 失败, 切换到备用图床并自动追加必要参数
 						if (!isUsingFallback && imageUrl.includes(ORIGINAL_DOMAIN)) {
 							isUsingFallback = true;
-							const fallbackUrl = imageUrl.replace(ORIGINAL_DOMAIN, FALLBACK_DOMAIN);
-							console.warn('[BG Debug] Switching to fallback:');
+							
+                            // 构建备用地址，并确保追加旧版 API 所需参数
+                            let fallbackUrl = imageUrl.replace(ORIGINAL_DOMAIN, FALLBACK_DOMAIN);
+                            if (!fallbackUrl.includes('?')) {
+                                fallbackUrl += '?type=img&dir=package';
+                            } else if (!fallbackUrl.includes('dir=package')) {
+                                fallbackUrl += '&dir=package';
+                            }
+                            
+							console.warn('[BG Debug] Switching to double-fallback:', fallbackUrl);
 							
 							// 更新CSS变量为备用图床URL
 							document.documentElement.style.setProperty('--bg-url', `url(${fallbackUrl})`);

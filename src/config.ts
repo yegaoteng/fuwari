@@ -36,7 +36,7 @@ export const siteConfig: SiteConfig = {
 	},
 	background: {
 		enable: true, // Enable background image
-		src: "https://img.micostar.cc/random", // 🎯 使用主力图床测试 fallback
+		src: "https://img.micostar.cc/random", // 优先使用新 API
 		position: "center", // Background position: 'top', 'center', 'bottom'
 		size: "cover", // Background size: 'cover', 'contain', 'auto'
 		repeat: "no-repeat", // Background repeat: 'no-repeat', 'repeat', 'repeat-x', 'repeat-y'
@@ -141,8 +141,8 @@ export const licenseConfig: LicenseConfig = {
 //图片回退
 export const imageFallbackConfig: ImageFallbackConfig = {
 	enable: true,
-	originalDomain: "img.micostar.cc",           // 主力图床
-	fallbackDomain: "image.cloudrunmax.top",         // R2备用图床
+	originalDomain: "img.micostar.cc",           // 主力图床 (新项目)
+	fallbackDomain: "image.cloudrunmax.top",         // R2 备用图床 (旧项目)
 };
 
 export const umamiConfig: UmamiConfig = {
