@@ -101,7 +101,7 @@
 <style>
     .bg-toggle-btn {
         position: fixed;
-        bottom: 6rem;
+        bottom: 5.25rem;
         right: 1.5rem;
         width: 3rem;
         height: 3rem;
@@ -244,10 +244,33 @@
         }
     }
 
-    /* 移动端适配 */
-    @media (max-width: 768px) {
+    /* 桌面端适配 */
+    @media (min-width: 1024px) {
         .bg-toggle-btn {
-            bottom: 5rem;
+            bottom: 5.25rem;
+            right: 10rem;
+        }
+    }
+
+    /* 平板端适配 */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .bg-toggle-btn {
+            bottom: 5.25rem;
+            right: 1.5rem;
+            width: 3rem;
+            height: 3rem;
+        }
+
+        .bg-toggle-btn.hidden {
+            width: 4rem;
+            height: 4rem;
+        }
+    }
+
+    /* 移动端适配 */
+    @media (max-width: 767px) {
+        .bg-toggle-btn {
+            bottom: 4.25rem;
             right: 1rem;
             width: 2.75rem;
             height: 2.75rem;
