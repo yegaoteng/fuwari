@@ -8,15 +8,15 @@ tags: [Unity, 网络API]
 lang: ""
 ---
 
-<h1><!-- [if !supportLists]--><span style="mso-list: Ignore;">1.&nbsp;</span><!--[endif]--><strong><span style="font-family: 宋体;">准备资源</span></strong></h1>
+<h2><strong><span style="font-family: 宋体;">1. 准备资源</span></strong></h2>
 <p class="MsoNormal"><!-- [if !supportLists]--><span style="mso-list: Ignore;">A.&nbsp;</span><!--[endif]--><span style="font-family: 宋体;">网站官方：</span><a href="https://openweathermap.org/"><u><span style="font-family: Calibri;">https://openweathermap.org/</span></u></a>&nbsp;&nbsp;&nbsp;<span style="font-family: Calibri;">(</span><span style="font-family: 宋体;">创建账户，获得免费</span><span style="font-family: Calibri;">API Key)</span></p>
 <p class="MsoNormal"><!-- [if !supportLists]--><span style="mso-list: Ignore;">B.&nbsp;</span><!--[endif]--><span style="font-family: 宋体;">网站</span><span style="font-family: Calibri;">API</span><span style="font-family: 宋体;">文档调用示例：</span><a href="https://openweathermap.org/current"><u><span class="15"><span style="font-family: 宋体;">当前天气数据</span> - OpenWeatherMap</span></u></a></p>
 <p class="MsoNormal"><!-- [if !supportLists]--><span style="mso-list: Ignore;">C.&nbsp;</span><!--[endif]--><span style="font-family: 宋体;">网站地理编码</span><span style="font-family: Calibri;">API</span><span style="font-family: 宋体;">文档示例：</span><a href="https://openweathermap.org/api/geocoding-api"><u><span class="15"><span style="font-family: 宋体;">地理编码</span> API - OpenWeatherMap</span></u></a></p>
 <p class="MsoNormal"><!-- [if !supportLists]--><span style="mso-list: Ignore;">D.&nbsp;</span><!--[endif]--><span style="font-family: 宋体;">网站天气图标获取</span><span style="font-family: Calibri;">(</span><span style="font-family: 宋体;">采用</span><span style="font-family: Calibri;">F12</span><span style="font-family: 宋体;">检查台来获取源图片</span><span style="font-family: Calibri;">)</span><span style="font-family: 宋体;">：</span><a href="#How-to-get-icon-URL"><u><span class="15"><span style="font-family: 宋体;">天气状况</span> - OpenWeatherMap</span></u></a></p>
-<h1><span style="mso-list: Ignore;">2. 界面搭建</span><!--[endif]--></h1>
+<h2><span style="mso-list: Ignore;">2. 界面搭建</span></h2>
 <p><span style="mso-list: Ignore;"><img src="/images/image-1753347351824-766386576.webp" alt=""></span></p>
 <p><span style="mso-list: Ignore;"><img src="/images/image-1753347365939-458403350.webp" alt=""></span></p>
-<h1><span style="mso-list: Ignore;">3.&nbsp;</span><!--[endif]--><strong><span style="font-family: 宋体;">编写详细脚本</span></strong></h1>
+<h2><strong><span style="font-family: 宋体;">3. 编写详细脚本</span></strong></h2>
 <p class="MsoNormal"><span style="font-family: 宋体;">A.创建按钮与输入框，检查事件</span><span style="font-family: Calibri;">/</span><span style="font-family: 宋体;">监听事件</span></p>
 <p class="MsoNormal"><span style="font-family: 宋体;"><img src="/images/image-1753347438843-50591915.webp" alt=""></span></p>
 <p class="MsoNormal"><span style="font-family: 宋体;"><img src="/images/image-1753347452518-259337095.webp" alt="" width="468" height="28"></span></p>

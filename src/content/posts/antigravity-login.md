@@ -9,7 +9,7 @@ draft: false
 lang: ''
 ---
 
-# 首先我们要确保你的账号问题不是出自以下方面
+## 首先我们要确保你的账号问题不是出自以下方面
 
 ## 节点问题
 请确保你的节点干净一点，不要是很差的
@@ -25,7 +25,7 @@ lang: ''
 ![](/images/Antigravity3.webp)
 ![](/images/Antigravity2.webp)
 
-# FAQ解决方法
+## FAQ解决方法
 
 ## 原作者项目
 ::github{repo="lbjlaq/Antigravity-Manager"}

@@ -8,7 +8,7 @@ tags: [Unity,汉化,模块添加]
 draft: false 
 lang: ''
 ---
-# UnityHub安装Unity时手动添加模块
+## UnityHub安装Unity时手动添加模块
 有些情况下，我们即使使用了正确的安装量设置等，但UnityHub在安装Unity时，仍然会出现没有“添加模块”这个选项的情况，如下图所示：
 ![](/images/unitymod0.webp)
 
