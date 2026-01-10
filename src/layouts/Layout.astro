@@ -7,6 +7,7 @@ import { profileConfig, siteConfig, googleAnalyticsConfig, antiLeechConfig } fro
 import ConfigCarrier from "@components/ConfigCarrier.astro";
 import AntigravityBg from "@components/AntigravityBg.svelte";
 import BackgroundToggle from "@components/BackgroundToggle.svelte";
+import ReadingProgressMobile from "@components/ReadingProgressMobile.svelte";
 import {
 	AUTO_MODE,
 	BANNER_HEIGHT,
@@ -341,6 +342,7 @@ const bannerOffset =
 		<AntigravityBg client:only="svelte" />
 		<ConfigCarrier></ConfigCarrier>
 		<BackgroundToggle client:only="svelte" />
+		<ReadingProgressMobile client:only="svelte" />
 		<div id="main-content-wrapper">
 			<slot />
 		</div>

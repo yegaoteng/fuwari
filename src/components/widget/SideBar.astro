@@ -4,6 +4,7 @@ import type { MarkdownHeading } from "astro";
 import Profile from "./Profile.astro";
 import Tag from "./Tags.astro";
 import VisitorInfo from "./VisitorInfo.astro";
+import ReadingProgressCard from "./ReadingProgressCard.svelte";
 
 interface Props {
 	class?: string;
@@ -20,5 +21,6 @@ const className = Astro.props.class;
         
     <Tag class="onload-animation" style="animation-delay: 200ms"></Tag>
     <VisitorInfo class="onload-animation" style="animation-delay: 300ms"></VisitorInfo>
+    <ReadingProgressCard client:only="svelte" />
     </div>
 </div>
