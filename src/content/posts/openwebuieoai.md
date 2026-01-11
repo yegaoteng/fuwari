@@ -1,6 +1,7 @@
 ﻿---
 title: 国内使用Gemini的官方模型
 published: 2025-10-08T17:37:02
+updated: 2026-01-11T20:00:00
 description: '通过EdgeOne的AI网关在国内免魔法安全访问Gemini官方模型，配合OpenWebUI实现超快速度的AI对话体验，包含完整配置步骤和自开发Pipe插件。'
 image: '/images/eoopenwebuispeed.webp'
 tags: [EdgeOne, Gemini, OpenWebUI]
@@ -43,3 +44,11 @@ https://github.com/Besty0728/OpenWebUI-EdgeOne-AI-Gemini/blob/main/edgeone_ai.py
 - OE-AI-Provider（请求头模板对应值）
 ### 3.3.开启后对话效果，十分迅速！
 ![](/images/eoopenwebuispeed.webp)
+## 4.新更新：增加3系列支持、优化思维链、支持附加API调节特有信息
+### 4.1.配置页面优化
+![](/images/eoopenwebuisetting.webp)
+### 4.2.支持思维链
+![](/images/eoopenwebui1.webp)
+![](/images/eoopenwebui2.webp)
+### 4.3.支持附加API调节特有信息
+![](/images/eoopenwebui3.webp)

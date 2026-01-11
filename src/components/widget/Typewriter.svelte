@@ -1,80 +1,89 @@
 <script lang="ts">
-    import { onMount } from "svelte";
+  import { onMount, onDestroy } from "svelte";
 
-    export let lines: string[] = [];
-    export let typeSpeed = 100;
-    export let deleteSpeed = 50;
-    export let waitTime = 2000;
+  interface Props {
+    lines?: string | string[];
+    typeSpeed?: number;
+    deleteSpeed?: number;
+    waitTime?: number;
+  }
 
-    let currentLineIndex = 0;
-    let currentCharIndex = 0;
-    let currentText = "";
-    let isDeleting = false;
-    let element: HTMLElement;
-    let cursorVisible = true;
+  let {
+    lines = [],
+    typeSpeed = 100,
+    deleteSpeed = 50,
+    waitTime = 2000,
+  } = $props<Props>();
 
-    // 如果传入的是字符串，转换成数组
-    $: textLines = Array.isArray(lines) ? lines : [lines];
+  let currentLineIndex = 0;
+  let currentCharIndex = 0;
+  let currentText = $state("");
+  let isDeleting = false;
+  let cursorVisible = $state(true);
+  let timer: number | undefined;
+  let cursorInterval: number | undefined;
 
-    function type() {
-        const fullText = textLines[currentLineIndex];
+  let textLines = $derived(Array.isArray(lines) ? lines : [lines]);
 
-        if (isDeleting) {
-            currentText = fullText.substring(0, currentCharIndex - 1);
-            currentCharIndex--;
-        } else {
-            currentText = fullText.substring(0, currentCharIndex + 1);
-            currentCharIndex++;
-        }
+  function type() {
+    // Ensure textLines has content before proceeding
+    if (!textLines.length) return;
 
-        let typeSpeedCurrent = typeSpeed;
+    const fullText = textLines[currentLineIndex];
 
-        if (isDeleting) {
-            typeSpeedCurrent = deleteSpeed;
-        }
-
-        if (!isDeleting && currentText === fullText) {
-            // 完成输入一句话
-            typeSpeedCurrent = waitTime;
-            isDeleting = true;
-        } else if (isDeleting && currentText === "") {
-            // 完成删除，切换到下一句
-            isDeleting = false;
-            currentLineIndex = (currentLineIndex + 1) % textLines.length;
-            typeSpeedCurrent = 500;
-        }
-
-        setTimeout(type, typeSpeedCurrent);
+    if (isDeleting) {
+      currentText = fullText.substring(0, currentCharIndex - 1);
+      currentCharIndex--;
+    } else {
+      currentText = fullText.substring(0, currentCharIndex + 1);
+      currentCharIndex++;
     }
 
-    onMount(() => {
-        if (textLines.length > 0) {
-            setTimeout(type, 1000);
-        }
+    let typeSpeedCurrent = typeSpeed;
 
-        //光标闪烁
-        const cursorInterval = setInterval(() => {
-            cursorVisible = !cursorVisible;
-        }, 530);
+    if (isDeleting) {
+      typeSpeedCurrent = deleteSpeed;
+    }
 
-        return () => clearInterval(cursorInterval);
-    });
+    if (!isDeleting && currentText === fullText) {
+      typeSpeedCurrent = waitTime;
+      isDeleting = true;
+    } else if (isDeleting && currentText === "") {
+      isDeleting = false;
+      currentLineIndex = (currentLineIndex + 1) % textLines.length;
+      typeSpeedCurrent = 500;
+    }
+
+    timer = setTimeout(type, typeSpeedCurrent);
+  }
+
+  onMount(() => {
+    if (textLines.length > 0) {
+      timer = setTimeout(type, 1000);
+    }
+
+    cursorInterval = setInterval(() => {
+      cursorVisible = !cursorVisible;
+    }, 530);
+  });
+
+  onDestroy(() => {
+    clearTimeout(timer);
+    clearInterval(cursorInterval);
+  });
 </script>
 
 <div
-    class="typewriter-container inline-block text-neutral-400 min-h-[1.5rem] relative pr-1 whitespace-nowrap"
-    bind:this={element}
+  class="typewriter-container inline-flex items-center text-neutral-400 min-h-[1.5rem] whitespace-nowrap"
 >
-    <span>{currentText}</span>
-    <span
-        class="cursor absolute top-0 -right-2"
-        style:opacity={cursorVisible ? 1 : 0}>|</span
-    >
+  <span>{currentText}</span>
+  <span class="cursor ml-[1px]" style:opacity={cursorVisible ? 1 : 0}>|</span>
 </div>
 
 <style>
-    .cursor {
-        color: var(--primary);
-        transition: opacity 0.1s;
-    }
+  .cursor {
+    color: var(--primary);
+    transition: opacity 0.1s;
+    line-height: 1; /* Ensure height matches text */
+  }
 </style>
