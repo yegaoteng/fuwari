@@ -162,26 +162,35 @@ const style = Astro.props.style;
             // 发送 HEAD 请求检测响应头
             const response = await fetch(window.location.href, { method: 'HEAD' });
             
-            const serverHeader = response.headers.get('server')?.toLowerCase() || '';
+            // Cloudflare 官方认证的标识符
+            // 参考：https://developers.cloudflare.com/fundamentals/reference/http-headers/
             const cfRay = response.headers.get('cf-ray');
-            const eoId = response.headers.get('x-edgeone-request-id');
+            const cfCacheStatus = response.headers.get('cf-cache-status');
+            
+            // EdgeOne 官方认证的标识符
+            // 参考：EdgeOne 官方文档 - 核心标识头部
+            const eoLogUuid = response.headers.get('eo-log-uuid');
+            const eoCacheStatus = response.headers.get('eo-cache-status');
 
-            if (cfRay || serverHeader.includes('cloudflare')) {
+            // 优先检查 Cloudflare（官方认证的标识符）
+            if (cfRay || cfCacheStatus) {
                 imgEl.src = CDN_IMG_CF;
                 imgEl.alt = 'Cloudflare';
-            } else if (eoId || serverHeader.includes('edgeone') || serverHeader.includes('tencent')) {
+            } 
+            // EdgeOne 检测（使用官方认证的头部）
+            else if (eoLogUuid || eoCacheStatus) {
                 imgEl.src = CDN_IMG_EO;
                 imgEl.alt = 'EdgeOne';
-            } else {
-                // 如果无法识别，可以根据 IP 查询结果辅助判断，或者暂时留空
-                // 这里暂时设为 Cloudflare 作为默认（或者你可以选择隐藏）
-                imgEl.src = CDN_IMG_CF; 
-                imgEl.alt = 'Cloudflare (Default)';
+            } 
+            // 无法识别时隐藏
+            else {
+                imgEl.style.display = 'none';
+                imgEl.alt = 'Unknown CDN';
             }
         } catch (e) {
             console.error('CDN detection failed:', e);
-            // 失败时回退
-            imgEl.src = CDN_IMG_CF;
+            // 失败时隐藏而非显示默认值
+            imgEl.style.display = 'none';
         }
     };
 
