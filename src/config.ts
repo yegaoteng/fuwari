@@ -58,8 +58,8 @@ export const siteConfig: SiteConfig = {
 	],
 	apps: [
 		{
-			name: "KatelyaTV",
-			url: "http://php.xo.je",
+			name: "YETVPLUS",
+			url: "https://mtv.ffurry.cc.cd",
 			image: "/favicon/openwebui.webp",
 			description: "一个免费看动漫的软件",
 			external: true,
