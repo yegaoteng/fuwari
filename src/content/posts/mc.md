@@ -1,4 +1,12 @@
+---
+title: "mc我的世界"
+date: 2026-05-20
+status: "published"  # 或 "draft"
+image: "https://app.webwd.de5.net/3.jpg"
+---
+
 # 我的世界
+
 
 下载必要文件并安装:↓
 
