@@ -1,7 +1,7 @@
 ---
 title: "mc我的世界"
 date: 2026-05-20
-status: "published"  # 或 "draft"
+published: true
 image: "https://app.webwd.de5.net/3.jpg"
 ---
 
