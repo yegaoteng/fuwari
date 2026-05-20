@@ -1,8 +1,13 @@
 ---
-title: "mc我的世界"
-date: 2026-05-20
-published: true
-image: "https://app.webwd.de5.net/3.jpg"
+title: 我的ClaudeCode使用笔记
+published: 2026-05-20T19:33:12
+updated: 2026-05-20T019:33:12
+description: 'mc教程'
+image: '/images/claude.webp'
+tags: [mc]
+
+draft: false 
+lang: ''
 ---
 
 # 我的世界
