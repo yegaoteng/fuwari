@@ -3,7 +3,7 @@ title: 我的ClaudeCode使用笔记
 published: 2026-05-20T19:33:12
 updated: 2026-05-20T019:33:12
 description: 'mc教程'
-image: '/images/claude.webp'
+image: 'https://app.webwd.de5.net/3.jpg'
 tags: [mc]
 
 draft: false 
