@@ -84,8 +84,8 @@ export const navBarConfig: NavBarConfig = {
 
 export const profileConfig: ProfileConfig = {
 	avatar: "http://webcd.xo.je/view.php/301df8bf2c30d0a0de67e18e76c5bf69.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
-	name: "qy",
-	bio: ["邮箱:@webwd.de5.net"],
+	name: "ye",
+	bio: ["邮箱:y@webwd.de5.net"],
 	links: [
 	],
 };
@@ -112,7 +112,7 @@ export const umamiConfig: UmamiConfig = {
 
 // 防盗链/域名保护配置
 export const antiLeechConfig: AntiLeechConfig = {
-	enable: true,
+	enable: false,
 	officialSites: [{ url: "https://blog.ffurry.cc.cd", name: "主站" }],
 	debug: false,
 	warningTitle: "⚠️ 域名安全警告",
