@@ -1,5 +1,5 @@
 ---
-title: 我的ClaudeCode使用笔记
+title: 我的mcJava服务器
 published: 2026-05-20
 updated: 2026-05-20
 description: 'mc教程'
@@ -24,6 +24,7 @@ lang: ''
 如果pcl启动器打不开下载[补丁](https://links.8uid.com/d/84962f15f4cea12950f261cfeeea4e0e)
 
 相关资源[ Fcl启动器手机1.3.0.6版](https://links.8uid.com/d/d2c515d39dcf3f1ee1f31f4fd73a5f0e)
+
 
 其他问题请看下面↓
 
@@ -64,4 +65,3 @@ https://littleskin.cn/api/yggdrasil
 
 ![](https://links.8uid.com/d/cdac1edbf32925a65b0bfe7c6c460609)
 
-</video>
