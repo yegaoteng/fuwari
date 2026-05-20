@@ -11,10 +11,11 @@ import type {
 import { LinkPreset } from "./types/config";
 
 export const siteConfig: SiteConfig = {
-	title: "qy Blog",
+	title: "ye & 帆蓝的小博客",
 	subtitle: "",
 	description:
 		"",
+	url:"https://blog.ffurry.cc.cd",
 
 	keywords: [],
 	lang: "zh_CN", // 'en', 'zh_CN', 'zh_TW', 'ja', 'ko', 'es', 'th'
