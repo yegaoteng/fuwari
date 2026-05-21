@@ -11,6 +11,7 @@ lang: ''
 ---
 
 # 我的世界
+<audio autoplay> <source src="https://links.8uid.com/d/ca49d057281cbad0de5470d3cd7d22d2" type="audio/mpeg"> </audio>
 
 
 下载必要文件并安装:↓
