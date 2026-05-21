@@ -52,7 +52,7 @@ export const siteConfig: SiteConfig = {
 	favicon: [
 		// Leave this array empty to use the default favicon
 		{
-			src: "https://app.webwd.de5.net/2.jpg", // Path of the favicon, relative to the /public directory
+			src: "https://links.8uid.com/d/67ef7d9ad8aaf67b96a717c6967e22d3", // Path of the favicon, relative to the /public directory
 			//   theme: 'light',              // (Optional) Either 'light' or 'dark', set only if you have different favicons for light and dark mode
 			//   sizes: '32x32',              // (Optional) Size of the favicon, set only if you have favicons of different sizes
 		},
