@@ -33,12 +33,12 @@ export const siteConfig: SiteConfig = {
 			enable: true, // Display the credit text of the banner image
 			text: "Pixiv @chokei", // Credit text to be displayed
 
-			url: "https://img.micostar.cc/random", // (Optional) URL link to the original artwork or artist's page
+			url: "https://app.webwd.de5.net/2.jpg", // (Optional) URL link to the original artwork or artist's page
 		},
 	},
 	background: {
 		enable: true, // Enable background image
-		src: "https://img.micostar.cc/random", // 优先使用新 API
+		src: "https://app.webwd.de5.net/2.jpg", // 优先使用新 API
 		position: "center", // Background position: 'top', 'center', 'bottom'
 		size: "cover", // Background size: 'cover', 'contain', 'auto'
 		repeat: "no-repeat", // Background repeat: 'no-repeat', 'repeat', 'repeat-x', 'repeat-y'
@@ -52,7 +52,7 @@ export const siteConfig: SiteConfig = {
 	favicon: [
 		// Leave this array empty to use the default favicon
 		{
-			src: "https://image.cloudrunmax.top/file/CF/1756734381495_58fc963052f0a5cd8ce123b8d10c4a53.jpg", // Path of the favicon, relative to the /public directory
+			src: "https://app.webwd.de5.net/2.jpg", // Path of the favicon, relative to the /public directory
 			//   theme: 'light',              // (Optional) Either 'light' or 'dark', set only if you have different favicons for light and dark mode
 			//   sizes: '32x32',              // (Optional) Size of the favicon, set only if you have favicons of different sizes
 		},
