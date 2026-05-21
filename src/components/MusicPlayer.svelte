@@ -16,7 +16,7 @@ let showLoadedToast = false; // 控制加载完成提示显示
 let loadStartTime = 0; // 记录加载开始时间
 
 // 音频文件配置 - 支持多格式回退
-const audioSources = ["https://links.8uid.com/d/ca49d057281cbad0de5470d3cd7d22d2", "https://links.8uid.com/d/0cc6ee27e1614a8992b0e833f049b1b4","https://links.8uid.com/d/b6e89474223f16b9189045d15e4d8fb9"];
+const audioSources = ["https://links.8uid.com/d/0cc6ee27e1614a8992b0e833f049b1b4","https://links.8uid.com/d/b6e89474223f16b9189045d15e4d8fb9"];
 
 let currentSourceIndex = 0;
 
