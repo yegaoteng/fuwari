@@ -9,7 +9,7 @@ tags: [波比的游戏时间]
 draft: false 
 lang: ''
 ---
-# *Poppy Play time 3 and 4* 
+# *Poppy Play time 3 and 4(建议使用无痕浏览器)* 
 
 #### 波比的游戏时间 3(bug版) 
 <video width="100%" height="100%" controls> <source src="https://links.8uid.com/d/6b274e51710f2c6bd50e88771322a94e" type="video/mp4"> </video> 
