@@ -33,7 +33,7 @@ export const siteConfig: SiteConfig = {
 			enable: true, // Display the credit text of the banner image
 			text: "Pixiv @chokei", // Credit text to be displayed
 
-			url: "https://app.webwd.de5.net/2.jpg", // (Optional) URL link to the original artwork or artist's page
+			url: "https://links.8uid.com/d/67ef7d9ad8aaf67b96a717c6967e22d3", // (Optional) URL link to the original artwork or artist's page
 		},
 	},
 	background: {
