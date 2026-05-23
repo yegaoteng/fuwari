@@ -14,11 +14,15 @@ lang: ''
 背景音:
 -24/7
 <audio controls> <source src="https://f.ffurry.cc.cd/view.php/61a87e05c002e89104c1564ccc07df04.mp3" type="audio/mpeg"> 
+</audio>
 -碾压
-<audio controls> <source src="https://f.ffurry.cc.cd/view.php/61a87e05c002e89104c1564ccc07df04.mp3" type="audio/mpeg"> 
+<audio controls> <source src="https://f.ffurry.cc.cd/view.php/5db68bef15cb15d4a301822b15467be4.mp3" type="audio/mpeg"> 
+</audio>
 -intro
-<audio controls> <source src="https://f.ffurry.cc.cd/view.php/61a87e05c002e89104c1564ccc07df04.mp3" type="audio/mpeg"> 
+<audio controls> <source src="https://f.ffurry.cc.cd/view.php/0a15ce618e3d80f92c7d29209d2995ae.mp3" type="audio/mpeg"> 
+</audio>
 -做自己的光
+<audio controls> <source src="https://f.ffurry.cc.cd/view.php/84d79eb70484d421323ffc02f694f5fc.mp3" type="audio/mpeg"> 
 </audio>
 
 
