@@ -11,7 +11,15 @@ lang: ''
 ---
 
 # 我的世界
-<audio autoplay> <source src="https://f.ffurry.cc.cd/view.php/61a87e05c002e89104c1564ccc07df04.mp3" type="audio/mpeg"> </audio>
+背景音:
+-24/7
+<audio controls> <source src="https://f.ffurry.cc.cd/view.php/61a87e05c002e89104c1564ccc07df04.mp3" type="audio/mpeg"> 
+-碾压
+<audio controls> <source src="https://f.ffurry.cc.cd/view.php/61a87e05c002e89104c1564ccc07df04.mp3" type="audio/mpeg"> 
+-intro
+<audio controls> <source src="https://f.ffurry.cc.cd/view.php/61a87e05c002e89104c1564ccc07df04.mp3" type="audio/mpeg"> 
+-做自己的光
+</audio>
 
 
 下载必要文件并安装:↓
