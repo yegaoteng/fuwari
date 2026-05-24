@@ -1,7 +1,7 @@
 ---
 title: 我的mcJava服务器
 published: 2026-05-20
-updated: 2026-05-20
+updated: 2026-05-24
 description: 'mc教程'
 image: 'https://app.webwd.de5.net/3.jpg'
 tags: [mc]
@@ -11,18 +11,10 @@ lang: ''
 ---
 
 # 我的世界
-背景音:
--24/7
-<audio controls> <source src="https://f.ffurry.cc.cd/view.php/61a87e05c002e89104c1564ccc07df04.mp3" type="audio/mpeg"> 
-</audio>
--碾压
-<audio controls> <source src="https://f.ffurry.cc.cd/view.php/5db68bef15cb15d4a301822b15467be4.mp3" type="audio/mpeg"> 
-</audio>
--intro
-<audio controls> <source src="https://f.ffurry.cc.cd/view.php/0a15ce618e3d80f92c7d29209d2995ae.mp3" type="audio/mpeg"> 
-</audio>
--做自己的光
-<audio controls> <source src="https://f.ffurry.cc.cd/view.php/84d79eb70484d421323ffc02f694f5fc.mp3" type="audio/mpeg"> 
+背景音:24/7
+<audio autoplay controls> 
+<source src="https://links.8uid.com/d/ca49d057281cbad0de5470d3cd7d22d2" type="audio/mpeg"> 
+<source src="https://f.ffurry.cc.cd/view.php/61a87e05c002e89104c1564ccc07df04.mp3" type="audio/mpeg">
 </audio>
 
 
@@ -32,7 +24,9 @@ lang: ''
 
 [java17(已安装的可跳过)](https://links.8uid.com/d/5b3e43b11a713e43183fc6cdd8dcea5d)
 
-[1.19.2雾中人整合包](https://links.8uid.com/d/0a3719a2a45315ee25af29abdd87f64e)
+[1.19.2雾中人整合包](https://links.8uid.com/d/5aaf4268007394144b8b6f55c37487cd)
+
+[部分mods](https://links.8uid.com/d/3eed364973a4bc68d669acf649c45fcb)
 
 如果pcl启动器打不开下载[补丁](https://links.8uid.com/d/84962f15f4cea12950f261cfeeea4e0e)
 
