@@ -33,7 +33,18 @@ lang: ''
 相关资源[ Fcl启动器手机1.3.0.6版](https://links.8uid.com/d/d2c515d39dcf3f1ee1f31f4fd73a5f0e)
 
 
-其他问题请看下面↓
+# 教程
+### 电脑pcl2安装及整合包:
+先下载java环境（上面有），在上方找到**pcl启动器**下载，**解压**，**打开**pcl启动器。
+
+![pcl启动器](https://links.8uid.com/d/9b8f11e3eacad44b5f9db73420a46f65)
+
+![](https://links.8uid.com/d/3e859323a7cd1e0d621a646e2f262957)
+
+**下载**整合包（上面有），将下载的整合包直接**拖入**pcl启动器，安装好后返回启动器**首页**，在左侧**添加离线账号或正版账号(如果有)**。外置登录bing或百度有。
+
+![pcl添加账号](https://links.8uid.com/d/0365d918ce8f6c6b6e864934e51afa82)
+
 
 ## 注意:启动前先添加一个离线账户!
 
@@ -60,15 +71,12 @@ https://littleskin.cn/api/yggdrasil
 **pcl2**同理，解决方法(选择一种):
 
 * 1-关闭pcl2，单击鼠标左键选中pcl2，右键，选择以管理员身份运行。
-* 2-清理缓存，重新在除系统盘外其他盘创建**全英目录**，如`D:\mc`，将pcl2及游戏数据文件夹，复制到里面重新用方法1启动。
+* 2-清理缓存，重新在除系统盘外其他盘重新创建**全英目录**，如`D:\mc`，将pcl2及游戏数据文件夹，复制到里面重新用方法1启动。
 
-#### 指令:
+#### 部分指令:
 
 创造 `/gamemode creative`
 
 生存 `/gamemode survival`
 
 ![](https://links.8uid.com/d/3dc97d91d53db5d1510de4a86b86e373)
-
-![](https://links.8uid.com/d/cdac1edbf32925a65b0bfe7c6c460609)
-
