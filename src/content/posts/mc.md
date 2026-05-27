@@ -1,7 +1,7 @@
 ---
 title: 我的mcJava服务器
-published: 2026-05-20
-updated: 2026-05-24
+published: 2026-05-27
+updated: 2026-05-27
 description: 'mc教程'
 image: 'https://app.webwd.de5.net/3.jpg'
 tags: [mc]
@@ -72,6 +72,11 @@ https://littleskin.cn/api/yggdrasil
 
 * 1-关闭pcl2，单击鼠标左键选中pcl2，右键，选择以管理员身份运行。
 * 2-清理缓存，重新在除系统盘外其他盘重新创建**全英目录**，如`D:\mc`，将pcl2及游戏数据文件夹，复制到里面重新用方法1启动。
+
+
+# 剪辑草稿
+
+<video width="100%" height="100%" controls> <source src="https://links.8uid.com/d/8c84e4079871a7c17149e5b4cbacdc61" type="video/mp4"> </video>
 
 #### 部分指令:
 
