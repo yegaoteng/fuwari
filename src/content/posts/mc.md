@@ -24,9 +24,9 @@ lang: ''
 
 [java17(已安装的可跳过)](https://links.8uid.com/d/5b3e43b11a713e43183fc6cdd8dcea5d)
 
-[1.19.2雾中人整合包](https://links.8uid.com/d/5aaf4268007394144b8b6f55c37487cd)
+[1.19.2雾中人整合包](https://links.8uid.com/d/f6da80d91b96a09ab253e94562ad7614)
 
-[部分mods](https://links.8uid.com/d/3eed364973a4bc68d669acf649c45fcb)
+[部分mods](https://links.8uid.com/d/893120abc94b35a7e291f2d9a195f202)
 
 如果pcl启动器打不开下载[补丁](https://links.8uid.com/d/84962f15f4cea12950f261cfeeea4e0e)
 
