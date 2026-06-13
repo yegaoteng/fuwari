@@ -8,7 +8,7 @@ tags: [歌曲]
 draft: false 
 lang: ''
 ---
-# 支持双源回退
+# 精选歌曲2026/6/13更新
 ### 24/7
 <audio controls>
   <source src="https://links.8uid.com/d/791296a88832bec3c8c75ad20df94b4e" type="audio/mpeg">
@@ -41,4 +41,14 @@ lang: ''
 <audio controls>
   <source src="https://links.8uid.com/d/48c6a8d87c675278111ace781a448644" type="audio/mpeg">
   <source src="https://f.ffurry.cc.cd/view.php/84d79eb70484d421323ffc02f694f5fc.mp3" type="audio/mpeg">
+</audio>
+
+### Fever Pitch
+<audio controls>
+  <source src="http://f.ffurry.cc.cd/Fever%20Pitch.mp3" type="audio/mpeg">
+</audio>
+
+### 一点
+<audio controls>
+  <source src="http://f.ffurry.cc.cd/%E4%B8%80%E7%82%B9.mp3" type="audio/mpeg">
 </audio>
