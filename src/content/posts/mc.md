@@ -21,13 +21,13 @@ lang: ''
 
 [pcl启动器](https://gh-proxy.org/https://github.com/yegaoteng/myapp/releases/download/ppksp/Plain.Craft.Launcher.2.exe)
 
-[1.19.2雾中人整合包](https://gh-proxy.org/https://github.com/yegaoteng/myapp/releases/download/ppksp/cj_20260529_202615.zip)[1.19.2雾中人整合包-备用](https://v4.gh-proxy.org/https://github.com/yegaoteng/myapp/releases/download/ppksp/cj_20260529_202615.zip)
+[1.19.2雾中人整合包](https://gh-proxy.org/https://github.com/yegaoteng/myapp/releases/download/ppksp/cj_20260529_202615.zip)  |  [1.19.2雾中人整合包-备用](https://v4.gh-proxy.org/https://github.com/yegaoteng/myapp/releases/download/ppksp/cj_20260529_202615.zip)
 
 [部分mods](https://gh-proxy.org/https://github.com/yegaoteng/myapp/releases/download/ppksp/mods_20260529_202613.zip)
 
 如果pcl启动器打不开下载[补丁](https://gh-proxy.org/https://github.com/yegaoteng/myapp/releases/download/ppksp/pcl.exe)
 
-相关资源[ Fcl启动器手机1.3.0.6版](https://gh-proxy.org/https://github.com/yegaoteng/myapp/releases/download/ppksp/Fold.Craft.Launcher_1.3.0.6.apk)[ Fcl启动器手机1.3.0.6版-备用](https://v4.gh-proxy.org/https://github.com/yegaoteng/myapp/releases/download/ppksp/Fold.Craft.Launcher_1.3.0.6.apk)
+相关资源[ Fcl启动器手机1.3.0.6版](https://gh-proxy.org/https://github.com/yegaoteng/myapp/releases/download/ppksp/Fold.Craft.Launcher_1.3.0.6.apk)  |  [ Fcl启动器手机1.3.0.6版-备用](https://v4.gh-proxy.org/https://github.com/yegaoteng/myapp/releases/download/ppksp/Fold.Craft.Launcher_1.3.0.6.apk)
 
 
 # 教程
