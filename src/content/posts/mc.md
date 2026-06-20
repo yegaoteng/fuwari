@@ -27,7 +27,9 @@ lang: ''
 
 如果pcl启动器打不开下载[补丁](https://gh-proxy.org/https://github.com/yegaoteng/myapp/releases/download/ppksp/pcl.exe)
 
-相关资源[ Fcl启动器手机1.3.0.6版](https://gh-proxy.org/https://github.com/yegaoteng/myapp/releases/download/ppksp/Fold.Craft.Launcher_1.3.0.6.apk)  |  [ Fcl启动器手机1.3.0.6版-备用](https://v4.gh-proxy.org/https://github.com/yegaoteng/myapp/releases/download/ppksp/Fold.Craft.Launcher_1.3.0.6.apk)
+相关资源[ zl2启动器](https://gh-proxy.org/https://github.com/yegaoteng/myapp/releases/download/ppksp/Zalith.Launcher_2.4.8.apk)  |  [ zl2启动器备用](https://v4.gh-proxy.org/https://github.com/yegaoteng/myapp/releases/download/ppksp/Zalith.Launcher_2.4.8.apk)
+
+渲染器:[mobileglues渲染器(高性能适合开光影大型资源包的时候用)](https://v4.gh-proxy.com/https://github.com/yegaoteng/myapp/releases/download/ppksp/MobileGlues_1.3.4.apk)
 
 
 # 教程
